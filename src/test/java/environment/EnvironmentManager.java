@@ -1,17 +1,16 @@
 package environment;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class EnvironmentManager {
 
 
     public static void initWebDriver() {
-        System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER") + "/chromedriver");
-        ChromeOptions options = new ChromeOptions();
-        options.setExperimentalOption("useAutomationExtension", false);
-        WebDriver driver = new ChromeDriver(options);
+        System.setProperty("webdriver.gecko.driver", System.getenv("FIREFOX_DRIVER") + "/geckodriver");
+//        ChromeOptions options = new ChromeOptions();
+//        options.setExperimentalOption("useAutomationExtension", false);
+        WebDriver driver = new FirefoxDriver();
         RunEnvironment.setWebDriver(driver);
     }
 

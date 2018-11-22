@@ -7,7 +7,7 @@ public class EnvironmentManager {
 
 
     public static void initWebDriver() {
-        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver_linux64/chromedriver");
+        System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER") + "/chromedriver");
         WebDriver driver = new ChromeDriver();
         RunEnvironment.setWebDriver(driver);
     }

@@ -11,6 +11,8 @@ public class EnvironmentManager {
         System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER") + "/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("useAutomationExtension", false);
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
         WebDriver driver = new ChromeDriver(options);
         RunEnvironment.setWebDriver(driver);
     }

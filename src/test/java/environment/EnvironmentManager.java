@@ -13,7 +13,7 @@ public class EnvironmentManager {
     public static void initWebDriver() throws MalformedURLException {
         System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER") + "/chromedriver");
         DesiredCapabilities capability = DesiredCapabilities.chrome();
-        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:8081/wd/hub"), capability);
+        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:8081/"), capability);
 
 //        ChromeOptions options = new ChromeOptions();
 //        options.setExperimentalOption("useAutomationExtension", false);

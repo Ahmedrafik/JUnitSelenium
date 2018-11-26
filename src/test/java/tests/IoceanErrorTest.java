@@ -7,10 +7,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class IoceanTest {
+public class IoceanErrorTest {
   private WebDriver driver;
 
   @Before
@@ -23,10 +22,6 @@ public class IoceanTest {
   public void test2() {
       driver.get("http://wikipedia.fr/index.php");
       driver.findElement(By.id("Search")).clear();
-      driver.findElement(By.id("Search")).sendKeys("software");
-      driver.findElement(By.id("Search")).sendKeys(Keys.ENTER);
-      driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Wikiwix'])[1]/following::p[1]")).click();
-      driver.findElement(By.linkText("Brøderbund Software")).click();
       Assert.assertEquals("Wikipedia.fr - Résultats pour « software » sur Wikipédia en français", driver.getTitle());
   }
 

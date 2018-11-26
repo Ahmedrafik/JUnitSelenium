@@ -6,10 +6,9 @@ rm -f res.csv
 while read line;
 do
     echo -ne "$line" >> res.csv
-    testName="$(cut -d';' -f $1 <<< $line)"
-    echo "parameters = $@"
-    echo "param number = $#"
-    if [[ "$#" -eq 1 ]] || [[ "$@" =~ (^|[[:space:]])${testName}($|[[:space:]]) ]];
+    testName="$(cut -d';' -f $COLUMNNUMBER <<< $line)"
+	nbTest=$(wc -w <<< "$TESTLIST")
+    if [[ "${nbTest}" -eq 0 ]] || [[ "$TESTLIST" =~ (^|[[:space:]])${testName}($|[[:space:]]) ]];
     then
         mvn test -Dtest="${testName}"
         if [[ "$?" -ne 0 ]] ;
@@ -19,7 +18,7 @@ do
             echo -e ";OK" >> res.csv
         fi
     else
-        echo -e ";Didn't Run" >> res.csv
+        echo -e ";Ignore" >> res.csv
 
     fi
-done < file.csv
+done < testcase.csv

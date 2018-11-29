@@ -13,8 +13,7 @@ import static org.openqa.selenium.By.xpath;
 public class AbstractTest {
     WebDriver driver;
 
-    String urlToGo = "http://mac-cme:8080/iovision/go?openPage=-94mbeq8hwf1hq6e7he3h2p25xt94bh9alkj6lg5lbfi00i9ykb27q5v6obp3unjlb0v3mu307590ua69yf9q7ivqytvd17m7xv2o";
-    
+    String urlToGo = "http://pc-jmf:8080/iovision/go?openPage=-94mbeq8hwf1hq6e7he3h2p25xt94bh9alkj6lg5lbfi00i9ykb27q5v6obp3unjjmi5ijyaloyteab9ogykke52vaogbi78yv3mk";
 
     @Before
     public void setUp() {

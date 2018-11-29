@@ -3,11 +3,9 @@ package tests;
 import environment.EnvironmentManager;
 import environment.RunEnvironment;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class IoceanTest {
@@ -21,13 +19,12 @@ public class IoceanTest {
 
   @Test
   public void test2() {
-      driver.get("http://wikipedia.fr/index.php");
-      driver.findElement(By.id("Search")).clear();
-      driver.findElement(By.id("Search")).sendKeys("software");
-      driver.findElement(By.id("Search")).sendKeys(Keys.ENTER);
-      driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Wikiwix'])[1]/following::p[1]")).click();
-      driver.findElement(By.linkText("Brøderbund Software")).click();
-      Assert.assertEquals("Wikipedia.fr - Résultats pour « software » sur Wikipédia en français", driver.getTitle());
+      driver.get("https://www.iocean.fr/nous.html");
+      driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Contactez-nous'])[1]/following::img[1]")).click();
+      driver.findElement(By.linkText("Clients")).click();
+      driver.findElement(By.linkText("En savoir +")).click();
+      driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Outils'])[2]/following::a[1]")).click();
+      driver.findElement(By.linkText("IOcean à l’avant-garde du droit à la déconnexion")).click();
   }
 
   @After

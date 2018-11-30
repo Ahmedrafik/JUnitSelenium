@@ -1,0 +1,54 @@
+=== Installer le plugin Katalon
+
+Katalon Studio est une solution de test d'automatisation gratuite développée par
+Katalon LLC.
+C'est une alternative à selenium IDE qui s’appuie sur les infrastructures d’automatisation
+open source de Selenium.
+
+Se rendre à l'url suivante :
+
+* https://addons.mozilla.org/fr/firefox/addon/katalon-automation-record/ pour Firefox
+* https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid pour google-chrome
+
+cliquez sur `Ajouter à Chrome/Firefox` et valider l'ajout de l'extension.
+
+image:img/katalon_logo.png[katalon_logo,20] cette icone verte apparait à droite de la barre d'adresse du navigateur
+L'installation est terminée
+
+=== Installer Java 8
+
+* Pour utiliser selenium web driver, nous avons besoin d'un jdk et non un jre.+
+Se rendre à l'url suivante :
+
+** https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+* Accepter la licence de `Java SE Development Kit 8uxxx`
+* Télécharger le `jdk-8uxxx-linux-x64.tar.gz`
+* Extraire cette archive dans `/usr/java/`
+* Définir la variable d’environnement JAVA_HOME dans le fichier ~/.bashrc et l'ajouter au PATH :
+[source, bash]
+----
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_xxx
+export PATH=$PATH:$JAVA_HOME/bin:.
+----
+* Tester l'intallation en ouvrant un terminal et en tapant :
+[source, bash]
+----
+java -version
+----
+La console devrait afficher la version de java installé :
+----
+openjdk version "1.8.0_191"
+OpenJDK Runtime Environment (build 1.8.0_191-b12)
+OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
+----
+
+=== Installer Maven 3
+
+=== Installer Jenkins
+
+
+- chrome driver
+
+- java
+
+- maven

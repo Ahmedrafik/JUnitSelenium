@@ -1,0 +1,8 @@
+==== Utilisation
+Katalon studio fonctionne exactement comme Selenium IDE, à la différence près que Selenium
+IDE, dans ces dernières version ne permet plus les exports Java/Junit.
+
+* Cliquez sur l'icone image:img/katalon_logo.png[katalon_logo,20] du navigateur.
+* l'application katalon s'ouvre :
+
+image::img/katalon_interface.png[katalon_interface]

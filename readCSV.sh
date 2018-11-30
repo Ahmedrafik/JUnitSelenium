@@ -1,12 +1,13 @@
 #!/bin/bash
 
-mvn clean
+#mvn clean
 rm -f res.csv
+tail -n +2 file.csv >> tmp.csv
 
 while read line;
 do
     echo -ne "$line" >> res.csv
-    testName="$(cut -d';' -f $1 <<< $line)"
+    testName="$(cut -d';' -f $1 <<< $line | sed 'y/áàâäçéèêëîïìôöóùúüñÂÀÄÇÉÈÊËÎÏÔÖÙÜÑ/aaaaceeeeiiiooouuunAAACEEEEIIOOUUN/') "
     echo "parameters = $@"
     echo "param number = $#"
     if [[ "$#" -eq 1 ]] || [[ "$@" =~ (^|[[:space:]])${testName}($|[[:space:]]) ]];
@@ -22,4 +23,4 @@ do
         echo -e ";Didn't Run" >> res.csv
 
     fi
-done < file.csv
+done < tmp.csv

@@ -2,15 +2,17 @@
 
 mvn clean
 rm -f res.csv
+sed -n -e '1,1p' testcase.csv > res.csv
+tail -n +2 testcase.csv >> tmp.csv
 
 while read line;
 do
     echo -ne "$line" >> res.csv
-    testName="$(cut -d';' -f $COLUMNNUMBER <<< $line)"
+    testName="$(cut -d';' -f $COLUMNNUMBER <<< $line | sed 'y/áàâäçéèêëîïìôöóùúüñÂÀÄÇÉÈÊËÎÏÔÖÙÜÑ/aaaaceeeeiiiooouuunAAACEEEEIIOOUUN/')"
 	nbTest=$(wc -w <<< "$TESTLIST")
     if [[ "${nbTest}" -eq 0 ]] || [[ "$TESTLIST" =~ (^|[[:space:]])${testName}($|[[:space:]]) ]];
     then
-        mvn test -Dtest="${testName}"
+        mvn test -Dtest="${testName}Test"
         if [[ "$?" -ne 0 ]] ;
         then
             echo -e ";KO" >> res.csv
@@ -21,4 +23,7 @@ do
         echo -e ";Ignore" >> res.csv
 
     fi
-done < testcase.csv
+done < tmp.csv
+
+rm -f tmp.csv
+rm -f testcase.csv

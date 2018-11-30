@@ -1,5 +1,4 @@
 ID;Module;Domaine;Fonctionnalité;Objectif du test;Préconditions;N° ordre;Action;Postconditions;Validé 11042018 19062018;Remarques
-1300;Commercial;Opportunité;Creation;Affichage de la page de création;Etre sur la recherche des opportunités;1;Je clique sur l'action 'Nouveau';Affichage de la page 'Nouvelle opportunité';;
+1300;Commercial;Opportunité;Création;Affichage de la page de création;Etre sur la recherche des opportunités;1;Je clique sur l'action 'Nouveau';Affichage de la page 'Nouvelle opportunité';;
 1340;Commercial;Opportunité;Ouverture;Ouvrir une opportunité;L'opportunité a été créée;1;J'ouvre une opportunité existante;Affichage de l'onglet 'Généralité';;
-;;Opportunité;Recherche;Rechercher une opportunité;Je suis connecté;1;Depuis l’accueil j’ouvre opportunité, je clique sur rechercher;J’ai des résultats (présence de « lignes trouvées »);;
-
+;;Opportunité;Recherche;Rechercher une opportunité;Je suis connecté;1;Depuis l’accueil j’ouvre opportunité je clique sur rechercher;J’ai des résultats (présence de « lignes trouvées »);;

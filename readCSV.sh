@@ -1,18 +1,18 @@
 #!/bin/bash
 
-#mvn clean
+mvn clean
 rm -f res.csv
-tail -n +2 file.csv >> tmp.csv
+sed -n -e '1,1p' testcase.csv > res.csv
+tail -n +2 testcase.csv >> tmp.csv
 
 while read line;
 do
     echo -ne "$line" >> res.csv
-    testName="$(cut -d';' -f $1 <<< $line | sed 'y/áàâäçéèêëîïìôöóùúüñÂÀÄÇÉÈÊËÎÏÔÖÙÜÑ/aaaaceeeeiiiooouuunAAACEEEEIIOOUUN/') "
-    echo "parameters = $@"
-    echo "param number = $#"
-    if [[ "$#" -eq 1 ]] || [[ "$@" =~ (^|[[:space:]])${testName}($|[[:space:]]) ]];
+    testName="$(cut -d';' -f $1 <<< $line | sed 'y/áàâäçéèêëîïìôöóùúüñÂÀÄÇÉÈÊËÎÏÔÖÙÜÑ/aaaaceeeeiiiooouuunAAACEEEEIIOOUUN/')"
+	nbTest=$(wc -w <<< "$@") - 2
+    if [[ "${nbTest}" -eq 0 ]] || [[ "$@" =~ (^|[[:space:]])${testName}($|[[:space:]]) ]];
     then
-        mvn test -Dtest="${testName}"
+        mvn test -Dtest="${testName}Test"
         if [[ "$?" -ne 0 ]] ;
         then
             echo -e ";KO" >> res.csv
@@ -20,7 +20,10 @@ do
             echo -e ";OK" >> res.csv
         fi
     else
-        echo -e ";Didn't Run" >> res.csv
+        echo -e ";Ignore" >> res.csv
 
     fi
 done < tmp.csv
+
+rm -f tmp.csv
+rm -f testcase.csv
